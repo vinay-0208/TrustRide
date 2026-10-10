@@ -1,0 +1,1 @@
+export const APP_CONSTANTS = { MAX_WAIT_TIME: 300000 };

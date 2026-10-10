@@ -1,0 +1,22 @@
+node_modules/
+.env
+.env*.local
+.env.development
+.env.production
+dist/
+build/
+.expo/
+android/
+ios/
+coverage/
+*.log
+*.xml
+
+# Sensitive keys and credentials
+*credentials*.json
+*serviceAccount*.json
+firebase-credentials.json
+*.pem
+*.key
+*.p12
+*.keystore
