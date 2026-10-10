@@ -388,6 +388,20 @@ When testing with the physical Android device connected over USB:
 - `backend/testRealtimeTrustSync.js`: **100% PASS** (both completed and cancelled events trigger `trust:updated`).
 - `backend/testCancellation.js`: **100% PASS** (all cancellation auth, stage tracking, notifications, and terminal protections verified).
 
+### 6.11 GitHub Baseline Backup & Repository Synchronization (COMPLETED)
+
+*Completed on 2026-10-10.*
+
+- **Target Repository**: `https://github.com/vinay-0208/TrustRide` (`main` branch)
+- **Secrets Audit**:
+  - `backend/firebase-credentials.json` confirmed ignored by Git index and `.gitignore`.
+  - Comprehensive `.gitignore` updated protecting `*credentials*.json`, `*serviceAccount*.json`, `.env*`, build outputs, coverage, and emulator XML dump files.
+  - Zero sensitive private keys, service account JSON files, or production secrets committed.
+- **Commit Details**:
+  - `4b52c26` (`chore: checkpoint working TrustRide baseline`): 79 files committed (unified backend, dashboard, mobile submodule, docs, test suites).
+  - `7ae5b2d` (`chore: merge remote origin/main LICENSE`): Clean merge of remote origin `LICENSE` file.
+  - Push status: `main -> main` (non-force push, `origin/main` fully up to date at `7ae5b2d`).
+
 ---
 
 ## 7. Next Recommended Task
@@ -398,6 +412,7 @@ Awaiting user manual verification of:
 2. Mobile app on connected OnePlus 13R (`97741778`):
    - Currency display in Indian Rupees (₹).
    - Pre- and post-start ride cancellation notifications.
+
 
 
 
