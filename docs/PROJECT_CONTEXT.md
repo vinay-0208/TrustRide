@@ -402,6 +402,23 @@ When testing with the physical Android device connected over USB:
   - `7ae5b2d` (`chore: merge remote origin/main LICENSE`): Clean merge of remote origin `LICENSE` file.
   - Push status: `main -> main` (non-force push, `origin/main` fully up to date at `7ae5b2d`).
 
+### 6.12 Monorepo Conversion & Mobile Source Recoverability (COMPLETED)
+
+*Completed on 2026-10-11.*
+
+- **Problem Identified**: The root repository tracked `mobile` as a `160000` gitlink without `.gitmodules` or a remote URL, making the mobile source unrecoverable on fresh clones.
+- **Safety Precaution**: A complete verified backup was archived to `C:\Fall Semister\2026\IIP\TrustRide_mobile_backup_phase1` (including `App.tsx`, `package.json`, and detached Git metadata) before modifying repository structure.
+- **Conversion Execution**:
+  - Removed `160000` gitlink entry from root index using `git rm --cached mobile`.
+  - Moved nested `.git` metadata to backup, converting `mobile/` into a standard monorepo folder.
+  - Staged all mobile application source files (`App.tsx`, `app.json`, assets, configs).
+  - Audited staged files: confirmed zero secrets, `.env` files, or build caches.
+  - Committed change: `841b294` (`chore(repo): track mobile as standard monorepo directory instead of gitlink`).
+  - Pushed to `origin/main`.
+- **Verification**:
+  - `git ls-tree HEAD mobile` verifies `040000 tree` (standard tree/directory instead of `160000` commit).
+  - Fresh clone test in `$env:TEMP` verified that `mobile/App.tsx` and `mobile/package.json` are 100% recoverable directly from GitHub.
+
 ---
 
 ## 7. Next Recommended Task
